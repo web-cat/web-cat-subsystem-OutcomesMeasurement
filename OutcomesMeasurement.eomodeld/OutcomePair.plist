@@ -1,0 +1,51 @@
+{
+    attributes = (
+        {
+            allowsNull = N;
+            columnName = externalOutcomeId;
+            name = externalOutcomeId;
+            prototypeName = id;
+        },
+        {allowsNull = N; name = id; prototypeName = id; },
+        {
+            allowsNull = N;
+            columnName = programOutcomeId;
+            name = programOutcomeId;
+            prototypeName = id;
+        }
+    );
+    className = "net.sf.webcat.outcomesmeasurement.OutcomePair";
+    classProperties = (externalOutcome, measures, programOutcome);
+    externalName = OutcomePair;
+    fetchSpecificationDictionary = {};
+    name = OutcomePair;
+    primaryKeyAttributes = (id);
+    relationships = (
+        {
+            destination = ExternalOutcome;
+            isMandatory = Y;
+            isToMany = N;
+            joinSemantic = EOInnerJoin;
+            joins = ({destinationAttribute = id; sourceAttribute = externalOutcomeId; });
+            name = externalOutcome;
+        },
+        {
+            deleteRule = EODeleteRuleCascade;
+            destination = MeasureOutcomePair;
+            isToMany = Y;
+            joinSemantic = EOInnerJoin;
+            joins = ({destinationAttribute = outcomePairOid; sourceAttribute = id; });
+            name = measureOutcomePairs;
+            propagatesPrimaryKey = Y;
+        },
+        {definition = "measureOutcomePairs.measure"; name = measures; },
+        {
+            destination = ProgramOutcome;
+            isMandatory = Y;
+            isToMany = N;
+            joinSemantic = EOInnerJoin;
+            joins = ({destinationAttribute = id; sourceAttribute = programOutcomeId; });
+            name = programOutcome;
+        }
+    );
+}

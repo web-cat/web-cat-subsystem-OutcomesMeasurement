@@ -1,0 +1,64 @@
+{
+  staff = {
+    accessLevel = 0; // make this tab visible to all
+    priority    = 100;
+    wantsStart  = YES;
+    config      = { overrideAccessLevel = true; };
+    children = {
+      Home = {
+        accessLevel = 0;
+        config      = { overrideAccessLevel = true; };
+        children   = {
+          Status = {
+            accessLevel = 0;
+            config      = { overrideAccessLevel = true; };
+          };
+          "My Profile" = {
+            accessLevel = 0;
+            config      = { overrideAccessLevel = true; };
+          };
+          Feedback = {
+            accessLevel = 0;
+            config      = { overrideAccessLevel = true; };
+          };
+        };
+      };
+      Outcomes = {
+        priority = 200;
+        accessLevel = 0;
+        children = {
+          "Dept Outcomes" = {
+            pageName   = net.sf.webcat.outcomesmeasurement.DeptOutcomesPage;
+            priority   = 3000;
+            id         = deptoutcomes;
+          };
+          "ABET Outcomes" = {
+            pageName   = net.sf.webcat.outcomesmeasurement.AccreditingBodyOutcomesPage;
+            priority   = 4000;
+            id         = ABEToutcomes;
+          };
+          "Measure Examples" = {
+            pageName   = net.sf.webcat.outcomesmeasurement.MeasureExamplesPage;
+            priority   = 5000;
+            id         = measureexamples;
+          };
+          "Measure Setup" = {
+            accessLevel = 90;
+            pageName    = net.sf.webcat.outcomesmeasurement.MeasurementSetupPage;
+            priority    = 6000;
+            id          = measuresetup;
+          };
+        };
+      };
+      Overview = {
+        priority = 300;
+        accessLevel = 0;
+        pageName   = net.sf.webcat.outcomesmeasurement.AssessmentOverviewPage;
+        id         = assessmentoverview;
+      };
+    };
+  };
+  student = {
+    accessLevel = 200; // hide this tab
+  };
+}

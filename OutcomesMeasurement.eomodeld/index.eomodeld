@@ -1,0 +1,57 @@
+{
+    EOModelVersion = "2.1"; 
+    adaptorName = JDBC; 
+    connectionDictionary = {
+        URL = "jdbc:mysql://localhost:3306/Assessment?capitalizeTypeNames=true"; 
+        driver = "com.mysql.jdbc.Driver"; 
+        password = qwczzor; 
+        plugin = MySQL; 
+        username = root; 
+    }; 
+    entities = (
+        {
+            className = "net.sf.webcat.outcomesmeasurement.AccreditingBody"; 
+            name = AccreditingBody; 
+        }, 
+        {className = EOGenericRecord; name = AccreditingBodyOutcomeSet; }, 
+        {
+            className = "net.sf.webcat.outcomesmeasurement.ExternalOutcome"; 
+            name = ExternalOutcome; 
+            parent = Outcome; 
+        }, 
+        {
+            className = "net.sf.webcat.outcomesmeasurement.FacultyReflection"; 
+            name = FacultyReflection; 
+        }, 
+        {className = "net.sf.webcat.outcomesmeasurement.Measure"; name = Measure; }, 
+        {
+            className = "net.sf.webcat.outcomesmeasurement.MeasureChange"; 
+            name = MeasureChange; 
+        }, 
+        {className = EOGenericRecord; name = MeasureCourse; }, 
+        {
+            className = "net.sf.webcat.outcomesmeasurement.MeasureOfOffering"; 
+            name = MeasureOfOffering; 
+        }, 
+        {className = EOGenericRecord; name = MeasureOutcomePair; }, 
+        {className = EOGenericRecord; name = MeasureProgramOutcome; }, 
+        {className = "net.sf.webcat.outcomesmeasurement.Outcome"; name = Outcome; }, 
+        {
+            className = "net.sf.webcat.outcomesmeasurement.OutcomePair"; 
+            name = OutcomePair; 
+        }, 
+        {
+            className = "net.sf.webcat.outcomesmeasurement.OutcomeSet"; 
+            name = OutcomeSet; 
+        }, 
+        {className = EOGenericRecord; name = OutcomeSetOutcome; }, 
+        {className = EOGenericRecord; name = OutcomeToOutcome; }, 
+        {className = "net.sf.webcat.outcomesmeasurement.Program"; name = Program; }, 
+        {
+            className = "net.sf.webcat.outcomesmeasurement.ProgramOutcome"; 
+            name = ProgramOutcome; 
+            parent = Outcome; 
+        }, 
+        {className = EOGenericRecord; name = ProgramOutcomeSet; }
+    ); 
+}
