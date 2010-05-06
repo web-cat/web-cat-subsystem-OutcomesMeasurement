@@ -27,6 +27,7 @@ package net.sf.webcat.outcomesmeasurement;
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
 import com.webobjects.foundation.*;
+import er.extensions.eof.ERXEOControlUtilities;
 import er.extensions.eof.ERXKey;
 import org.apache.log4j.Logger;
 
@@ -61,8 +62,8 @@ public abstract class _OutcomePair
      * attributes and relationships.
      * @param editingContext The context in which the new object will be
      * inserted
-     * @param externalOutcome
-     * @param programOutcome
+     * @param externalOutcomeValue
+     * @param programOutcomeValue
      * @return The newly created object
      */
     public static OutcomePair create(
@@ -149,6 +150,9 @@ public abstract class _OutcomePair
     public static final ERXKey<net.sf.webcat.outcomesmeasurement.ProgramOutcome> programOutcome =
         new ERXKey<net.sf.webcat.outcomesmeasurement.ProgramOutcome>(PROGRAM_OUTCOME_KEY);
     // To-many relationships ---
+    public static final String COURSEWORKS_KEY = "courseworks";
+    public static final ERXKey<net.sf.webcat.outcomesmeasurement.Coursework> courseworks =
+        new ERXKey<net.sf.webcat.outcomesmeasurement.Coursework>(COURSEWORKS_KEY);
     public static final String MEASURES_KEY = "measures";
     public static final ERXKey<net.sf.webcat.outcomesmeasurement.Measure> measures =
         new ERXKey<net.sf.webcat.outcomesmeasurement.Measure>(MEASURES_KEY);
@@ -321,6 +325,184 @@ public abstract class _OutcomePair
         else
         {
             addObjectToBothSidesOfRelationshipWithKey( value, "programOutcome" );
+        }
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve the entities pointed to by the <code>courseworks</code>
+     * relationship.
+     * @return an NSArray of the entities in the relationship
+     */
+    @SuppressWarnings("unchecked")
+    public NSArray<net.sf.webcat.outcomesmeasurement.Coursework> courseworks()
+    {
+        return (NSArray)storedValueForKey( "courseworks" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Replace the list of entities pointed to by the
+     * <code>courseworks</code> relationship.
+     *
+     * @param value The new set of entities to relate to
+     */
+    public void setCourseworks( NSMutableArray<net.sf.webcat.outcomesmeasurement.Coursework>  value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "setCourseworks("
+                + value + "): was " + courseworks() );
+        }
+        takeStoredValueForKey( value, "courseworks" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Add a new entity to the <code>courseworks</code>
+     * relationship (DO NOT USE--instead, use
+     * <code>addToCourseworksRelationship()</code>.
+     * This method is provided for WebObjects use.
+     *
+     * @param value The new entity to relate to
+     */
+    public void addToCourseworks( net.sf.webcat.outcomesmeasurement.Coursework value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "addToCourseworks("
+                + value + "): was " + courseworks() );
+        }
+        NSMutableArray<net.sf.webcat.outcomesmeasurement.Coursework> array =
+            (NSMutableArray<net.sf.webcat.outcomesmeasurement.Coursework>)courseworks();
+        willChange();
+        array.addObject( value );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Remove a specific entity from the <code>courseworks</code>
+     * relationship (DO NOT USE--instead, use
+     * <code>removeFromCourseworksRelationship()</code>.
+     * This method is provided for WebObjects use.
+     *
+     * @param value The entity to remove from the relationship
+     */
+    public void removeFromCourseworks( net.sf.webcat.outcomesmeasurement.Coursework value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "RemoveFromCourseworks("
+                + value + "): was " + courseworks() );
+        }
+        NSMutableArray<net.sf.webcat.outcomesmeasurement.Coursework> array =
+            (NSMutableArray<net.sf.webcat.outcomesmeasurement.Coursework>)courseworks();
+        willChange();
+        array.removeObject( value );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Add a new entity to the <code>courseworks</code>
+     * relationship.
+     *
+     * @param value The new entity to relate to
+     */
+    public void addToCourseworksRelationship( net.sf.webcat.outcomesmeasurement.Coursework value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "addToCourseworksRelationship("
+                + value + "): was " + courseworks() );
+        }
+        addObjectToBothSidesOfRelationshipWithKey(
+            value, "courseworks" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Remove a specific entity from the <code>courseworks</code>
+     * relationship.
+     *
+     * @param value The entity to remove from the relationship
+     */
+    public void removeFromCourseworksRelationship( net.sf.webcat.outcomesmeasurement.Coursework value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "removeFromCourseworksRelationship("
+                + value + "): was " + courseworks() );
+        }
+        removeObjectFromBothSidesOfRelationshipWithKey(
+            value, "courseworks" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Create a brand new object that is a member of the
+     * <code>courseworks</code> relationship.
+     *
+     * @return The new entity
+     */
+    public net.sf.webcat.outcomesmeasurement.Coursework createCourseworksRelationship()
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "createCourseworksRelationship()" );
+        }
+        EOClassDescription eoClassDesc = EOClassDescription
+            .classDescriptionForEntityName( "Coursework" );
+        EOEnterpriseObject eoObject = eoClassDesc
+            .createInstanceWithEditingContext( editingContext(), null );
+        editingContext().insertObject( eoObject );
+        addObjectToBothSidesOfRelationshipWithKey(
+            eoObject, "courseworks" );
+        return (net.sf.webcat.outcomesmeasurement.Coursework)eoObject;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Remove and then delete a specific entity that is a member of the
+     * <code>courseworks</code> relationship.
+     *
+     * @param value The entity to remove from the relationship and then delete
+     */
+    public void deleteCourseworksRelationship( net.sf.webcat.outcomesmeasurement.Coursework value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "deleteCourseworksRelationship("
+                + value + "): was " + courseworks() );
+        }
+        removeObjectFromBothSidesOfRelationshipWithKey(
+            value, "courseworks" );
+        editingContext().deleteObject( value );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Remove (and then delete, if owned) all entities that are members of the
+     * <code>courseworks</code> relationship.
+     */
+    public void deleteAllCourseworksRelationships()
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "deleteAllCourseworksRelationships(): was "
+                + courseworks() );
+        }
+        for (net.sf.webcat.outcomesmeasurement.Coursework object : courseworks())
+        {
+            deleteCourseworksRelationship(object);
         }
     }
 
@@ -835,6 +1017,97 @@ public abstract class _OutcomePair
         {
             return null;
         }
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve the count of all objects of this type.
+     *
+     * @param context The editing context to use
+     *
+     * @return the count of all objects
+     */
+    public static int countOfAllObjects(EOEditingContext context)
+    {
+        return countOfObjectsMatchingQualifier(context, null);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve the count of objects that match a qualifier.
+     *
+     * @param context The editing context to use
+     * @param qualifier The qualifier to use
+     *
+     * @return the count of objects matching the qualifier
+     */
+    public static int countOfObjectsMatchingQualifier(
+        EOEditingContext context, EOQualifier qualifier)
+    {
+        return ERXEOControlUtilities.objectCountWithQualifier(
+                context, ENTITY_NAME, qualifier);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve the count of objects using a list of keys and values to match.
+     *
+     * @param context The editing context to use
+     * @param keysAndValues a list of keys and values to match, alternating
+     *     "key", "value", "key", "value"...
+     *
+     * @return the count of objects that match the specified values
+     */
+    public static int countOfObjectsMatchingValues(
+        EOEditingContext context,
+        Object... keysAndValues)
+    {
+        if (keysAndValues.length % 2 != 0)
+        {
+            throw new IllegalArgumentException("There should a value " +
+                "corresponding to every key that was passed.");
+        }
+
+        NSMutableDictionary<String, Object> valueDictionary =
+            new NSMutableDictionary<String, Object>();
+
+        for (int i = 0; i < keysAndValues.length; i += 2)
+        {
+            Object key = keysAndValues[i];
+            Object value = keysAndValues[i + 1];
+
+            if (!(key instanceof String))
+            {
+                throw new IllegalArgumentException("Keys should be strings.");
+            }
+
+            valueDictionary.setObjectForKey(value, key);
+        }
+
+        return countOfObjectsMatchingValues(context, valueDictionary);
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve the count of objects using a dictionary of keys and values to
+     * match.
+     *
+     * @param context The editing context to use
+     * @param keysAndValues a dictionary of keys and values to match
+     *
+     * @return the count of objects that matched the specified values
+     */
+    @SuppressWarnings("unchecked")
+    public static int countOfObjectsMatchingValues(
+        EOEditingContext context,
+        NSDictionary<String, Object> keysAndValues)
+    {
+        return countOfObjectsMatchingQualifier(context,
+                EOQualifier.qualifierToMatchAllValues(keysAndValues));
     }
 
 

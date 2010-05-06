@@ -1,7 +1,7 @@
 /*==========================================================================*\
  |  $Id$
  |*-------------------------------------------------------------------------*|
- |  Copyright (C) 2009 Virginia Tech
+ |  Copyright (C) 2006-2009 Virginia Tech
  |
  |  This file is part of Web-CAT.
  |
@@ -21,28 +21,28 @@
 
 package net.sf.webcat.outcomesmeasurement;
 
-import net.sf.webcat.core.Subsystem;
+import net.sf.webcat.core.User;
 
-//-------------------------------------------------------------------------
+import com.webobjects.eocontrol.EOEditingContext;
+
+// -------------------------------------------------------------------------
 /**
- * This subsystem provides for Assessment data collection.  It does nothing
- * right now, but needs to be a named subclass so that the Subsystem
- * class will handle automatic database updates for this subsystem.
+ * TODO: place a real description here.
  *
- * @author Stephen Edwards
- * @author Last changed by $Author$
+ * @author
+ * @author  latest changes by: $Author$
  * @version $Revision$, $Date$
  */
-public class OutcomesMeasurement
-    extends Subsystem
+public class StudentAnswer
+    extends _StudentAnswer
 {
-    //~ Constructor ...........................................................
+    //~ Constructors ..........................................................
 
     // ----------------------------------------------------------
     /**
-     * Creates a new object.
+     * Creates a new StudentAnswer object.
      */
-    public OutcomesMeasurement()
+    public StudentAnswer()
     {
         super();
     }
@@ -50,7 +50,17 @@ public class OutcomesMeasurement
 
     //~ Methods ...............................................................
 
-
-
-    //~ Instance/static variables .............................................
+    public static StudentAnswer createStudentAnswer(Coursework cw,
+    												String points,
+    												User user,
+    												EOEditingContext ec){
+    	StudentAnswer sa = new StudentAnswer();
+    	ec.insertObject(sa);
+    	if (cw == null) System.out.println("cw is null");
+    	sa.setCourseworkRelationship(cw);
+    	sa.setPointsEarned(Double.valueOf(points));
+    	sa.setUserRelationship(user);
+    	ec.saveChanges();
+    	return sa;
+    }
 }

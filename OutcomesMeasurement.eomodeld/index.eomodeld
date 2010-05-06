@@ -15,6 +15,10 @@
         }, 
         {className = EOGenericRecord; name = AccreditingBodyOutcomeSet; }, 
         {
+            className = "net.sf.webcat.outcomesmeasurement.Coursework"; 
+            name = Coursework; 
+        }, 
+        {
             className = "net.sf.webcat.outcomesmeasurement.ExternalOutcome"; 
             name = ExternalOutcome; 
             parent = Outcome; 
@@ -52,6 +56,10 @@
             name = ProgramOutcome; 
             parent = Outcome; 
         }, 
-        {className = EOGenericRecord; name = ProgramOutcomeSet; }
+        {className = EOGenericRecord; name = ProgramOutcomeSet; }, 
+        {
+            className = "net.sf.webcat.outcomesmeasurement.StudentAnswer"; 
+            name = StudentAnswer; 
+        }
     ); 
 }

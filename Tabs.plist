@@ -48,6 +48,12 @@
             priority    = 6000;
             id          = measuresetup;
           };
+          "Gradebook Upload" = {
+            accessLevel = 90;
+            pageName    = net.sf.webcat.outcomesmeasurement.GradebookPage;
+            priority    = 7000;
+            id          = gradebookpage;
+          };
         };
       };
       Overview = {
