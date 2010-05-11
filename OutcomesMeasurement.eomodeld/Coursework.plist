@@ -22,7 +22,7 @@
         }
     ); 
     attributesUsedForLocking = (courseOfferingId, dateCompleted, description, "max_result"); 
-    className = "net.sf.webcat.outcomesmeasurement.Coursework"; 
+    className = "org.webcat.outcomesmeasurement.Coursework"; 
     classProperties = (
         courseOffering, 
         dateCompleted, 

@@ -21,7 +21,7 @@
         }
     ); 
     attributesUsedForLocking = (pointsEarned, response, userOID); 
-    className = "net.sf.webcat.outcomesmeasurement.StudentAnswer"; 
+    className = "org.webcat.outcomesmeasurement.StudentAnswer"; 
     classProperties = (coursework, pointsEarned, response, user); 
     externalName = StudentAnswer; 
     fetchSpecificationDictionary = {}; 

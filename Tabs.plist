@@ -28,29 +28,29 @@
         accessLevel = 0;
         children = {
           "Dept Outcomes" = {
-            pageName   = net.sf.webcat.outcomesmeasurement.DeptOutcomesPage;
+            pageName   = org.webcat.outcomesmeasurement.DeptOutcomesPage;
             priority   = 3000;
             id         = deptoutcomes;
           };
           "ABET Outcomes" = {
-            pageName   = net.sf.webcat.outcomesmeasurement.AccreditingBodyOutcomesPage;
+            pageName   = org.webcat.outcomesmeasurement.AccreditingBodyOutcomesPage;
             priority   = 4000;
             id         = ABEToutcomes;
           };
           "Measure Examples" = {
-            pageName   = net.sf.webcat.outcomesmeasurement.MeasureExamplesPage;
+            pageName   = org.webcat.outcomesmeasurement.MeasureExamplesPage;
             priority   = 5000;
             id         = measureexamples;
           };
           "Measure Setup" = {
             accessLevel = 90;
-            pageName    = net.sf.webcat.outcomesmeasurement.MeasurementSetupPage;
+            pageName    = org.webcat.outcomesmeasurement.MeasurementSetupPage;
             priority    = 6000;
             id          = measuresetup;
           };
           "Gradebook Upload" = {
             accessLevel = 90;
-            pageName    = net.sf.webcat.outcomesmeasurement.GradebookPage;
+            pageName    = org.webcat.outcomesmeasurement.GradebookPage;
             priority    = 7000;
             id          = gradebookpage;
           };
@@ -59,7 +59,7 @@
       Overview = {
         priority = 300;
         accessLevel = 0;
-        pageName   = net.sf.webcat.outcomesmeasurement.AssessmentOverviewPage;
+        pageName   = org.webcat.outcomesmeasurement.AssessmentOverviewPage;
         id         = assessmentoverview;
       };
     };

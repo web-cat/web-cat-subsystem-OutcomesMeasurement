@@ -25,7 +25,7 @@
         }
     ); 
     attributesUsedForLocking = (description, keyPhrase, label, microLabel, programId); 
-    className = "net.sf.webcat.outcomesmeasurement.ProgramOutcome"; 
+    className = "org.webcat.outcomesmeasurement.ProgramOutcome"; 
     classProperties = (description, keyPhrase, label, measures, microLabel, outcomePairs, program); 
     externalName = ProgramOutcome; 
     fetchSpecificationDictionary = {}; 

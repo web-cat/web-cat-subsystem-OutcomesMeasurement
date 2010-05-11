@@ -1,3 +1,3 @@
 {
-	homeStatus = net.sf.webcat.outcomesmeasurement.OutcomesMeasurementHomeStatus;
+	homeStatus = org.webcat.outcomesmeasurement.OutcomesMeasurementHomeStatus;
 }

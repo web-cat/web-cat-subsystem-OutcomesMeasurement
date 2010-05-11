@@ -10,7 +10,7 @@
         {columnName = name; name = name; prototypeName = tinyText; }
     );
     attributesUsedForLocking = (departmentId, name);
-    className = "net.sf.webcat.outcomesmeasurement.Program";
+    className = "org.webcat.outcomesmeasurement.Program";
     classProperties = (department, name, outcomeSets, programOutcomes);
     externalName = Program;
     fetchSpecificationDictionary = {};

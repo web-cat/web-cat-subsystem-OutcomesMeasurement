@@ -14,7 +14,7 @@
             prototypeName = id; 
         }
     ); 
-    className = "net.sf.webcat.outcomesmeasurement.OutcomePair"; 
+    className = "org.webcat.outcomesmeasurement.OutcomePair"; 
     classProperties = (courseworks, externalOutcome, measures, programOutcome); 
     externalName = OutcomePair; 
     fetchSpecificationDictionary = {}; 

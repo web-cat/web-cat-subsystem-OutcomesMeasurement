@@ -25,7 +25,7 @@
         }
     ); 
     attributesUsedForLocking = (accreditingBodyId, description, keyPhrase, label, microLabel); 
-    className = "net.sf.webcat.outcomesmeasurement.ExternalOutcome"; 
+    className = "org.webcat.outcomesmeasurement.ExternalOutcome"; 
     classProperties = (accreditingBody, description, keyPhrase, label, microLabel, outcomePairs); 
     externalName = ExternalOutcome; 
     fetchSpecificationDictionary = {}; 

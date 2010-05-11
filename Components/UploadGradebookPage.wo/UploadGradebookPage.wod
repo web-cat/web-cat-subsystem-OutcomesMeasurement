@@ -29,11 +29,11 @@ ColRepetition: WORepetition {
 }
 
 ColHeading: WCFilteringSelect {
-    list = "~@net.sf.webcat.outcomesmeasurement.UploadGradebookPage@COLUMNS";
+    list = "~@org.webcat.outcomesmeasurement.UploadGradebookPage@COLUMNS";
     selection = "~columns[colIndex]";
     style = "width: 10.5em;";
 }
 
-TR: net.sf.webcat.core.TableRow {
+TR: org.webcat.core.TableRow {
     index = index;
 }

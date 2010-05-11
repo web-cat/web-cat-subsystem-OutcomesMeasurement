@@ -7,7 +7,7 @@
         {columnName = microLabel; name = microLabel; prototypeName = tinyText; }
     );
     attributesUsedForLocking = (description, keyPhrase, label, microLabel);
-    className = "net.sf.webcat.outcomesmeasurement.Outcome";
+    className = "org.webcat.outcomesmeasurement.Outcome";
     classProperties = (
         description,
         isSupportedBy,

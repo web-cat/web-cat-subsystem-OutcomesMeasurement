@@ -1,7 +1,7 @@
 # ===================================================================
 # Opinions subsystem characteristics
 # ===================================================================
-subsystem.OutcomesMeasurement=net.sf.webcat.outcomesmeasurement.OutcomesMeasurement
+subsystem.OutcomesMeasurement=org.webcat.outcomesmeasurement.OutcomesMeasurement
 
 OutcomesMeasurement.version.major=1
 OutcomesMeasurement.version.minor=0

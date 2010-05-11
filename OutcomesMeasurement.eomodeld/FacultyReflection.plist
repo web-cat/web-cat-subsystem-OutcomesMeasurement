@@ -36,7 +36,7 @@
         studentFeedback,
         userId
     );
-    className = "net.sf.webcat.outcomesmeasurement.FacultyReflection";
+    className = "org.webcat.outcomesmeasurement.FacultyReflection";
     classProperties = (
         courseOffering,
         lastChange,

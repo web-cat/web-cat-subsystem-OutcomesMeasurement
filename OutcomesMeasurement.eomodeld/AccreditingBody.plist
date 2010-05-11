@@ -4,7 +4,7 @@
         {allowsNull = N; columnName = name; name = name; prototypeName = tinyText; }
     );
     attributesUsedForLocking = (name);
-    className = "net.sf.webcat.outcomesmeasurement.AccreditingBody";
+    className = "org.webcat.outcomesmeasurement.AccreditingBody";
     classProperties = (name, outcomes);
     externalName = AccreditingBody;
     fetchSpecificationDictionary = {};

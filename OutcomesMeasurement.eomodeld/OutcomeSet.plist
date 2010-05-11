@@ -9,7 +9,7 @@
         }
     );
     attributesUsedForLocking = (semesterId);
-    className = "net.sf.webcat.outcomesmeasurement.OutcomeSet";
+    className = "org.webcat.outcomesmeasurement.OutcomeSet";
     classProperties = (accreditingBodies, outcomes, programs, semester);
     externalName = OutcomeSet;
     fetchSpecificationDictionary = {};

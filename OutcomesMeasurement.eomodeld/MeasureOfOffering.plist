@@ -42,7 +42,7 @@
         unsatisfactory, 
         unsatisfactoryCriteria
     ); 
-    className = "net.sf.webcat.outcomesmeasurement.MeasureOfOffering"; 
+    className = "org.webcat.outcomesmeasurement.MeasureOfOffering"; 
     classProperties = (
         adequate, 
         adequateCriteria, 
