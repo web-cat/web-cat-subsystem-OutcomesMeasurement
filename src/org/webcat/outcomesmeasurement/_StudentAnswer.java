@@ -62,6 +62,7 @@ public abstract class _StudentAnswer
      * attributes and relationships.
      * @param editingContext The context in which the new object will be
      * inserted
+     * @param percentEarnedValue
      * @param pointsEarnedValue
      * @param courseworkValue
      * @param userValue
@@ -69,6 +70,7 @@ public abstract class _StudentAnswer
      */
     public static StudentAnswer create(
         EOEditingContext editingContext,
+        Double percentEarnedValue,
         Double pointsEarnedValue,
         org.webcat.outcomesmeasurement.Coursework courseworkValue,
         org.webcat.core.User userValue
@@ -78,6 +80,7 @@ public abstract class _StudentAnswer
             EOUtilities.createAndInsertInstance(
                 editingContext,
                 _StudentAnswer.ENTITY_NAME);
+        eoObject.setPercentEarned(percentEarnedValue);
         eoObject.setPointsEarned(pointsEarnedValue);
         eoObject.setCourseworkRelationship(courseworkValue);
         eoObject.setUserRelationship(userValue);
@@ -145,6 +148,9 @@ public abstract class _StudentAnswer
     //~ Constants (for key names) .............................................
 
     // Attributes ---
+    public static final String PERCENT_EARNED_KEY = "percentEarned";
+    public static final ERXKey<Double> percentEarned =
+        new ERXKey<Double>(PERCENT_EARNED_KEY);
     public static final String POINTS_EARNED_KEY = "pointsEarned";
     public static final ERXKey<Double> pointsEarned =
         new ERXKey<Double>(POINTS_EARNED_KEY);
@@ -209,6 +215,35 @@ public abstract class _StudentAnswer
             return er.extensions.eof.ERXConstant.ZeroInteger;
         }
     }
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve this object's <code>percentEarned</code> value.
+     * @return the value of the attribute
+     */
+    public Double percentEarned()
+    {
+        return (Double)storedValueForKey( "percentEarned" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Change the value of this object's <code>percentEarned</code>
+     * property.
+     *
+     * @param value The new value for this property
+     */
+    public void setPercentEarned( Double value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "setPercentEarned("
+                + value + "): was " + percentEarned() );
+        }
+        takeStoredValueForKey( value, "percentEarned" );
+    }
+
 
     // ----------------------------------------------------------
     /**

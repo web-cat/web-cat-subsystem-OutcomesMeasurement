@@ -21,9 +21,7 @@
 
 package org.webcat.outcomesmeasurement;
 
-import org.webcat.core.User;
 
-import com.webobjects.eocontrol.EOEditingContext;
 
 // -------------------------------------------------------------------------
 /**
@@ -49,18 +47,4 @@ public class StudentAnswer
 
 
     //~ Methods ...............................................................
-
-    public static StudentAnswer createStudentAnswer(Coursework cw,
-    												String points,
-    												User user,
-    												EOEditingContext ec){
-    	StudentAnswer sa = new StudentAnswer();
-    	ec.insertObject(sa);
-    	if (cw == null) System.out.println("cw is null");
-    	sa.setCourseworkRelationship(cw);
-    	sa.setPointsEarned(Double.valueOf(points));
-    	sa.setUserRelationship(user);
-    	ec.saveChanges();
-    	return sa;
-    }
 }

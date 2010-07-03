@@ -465,6 +465,7 @@ extends UpdateSet
 			sb.append("courseworkId INTEGER NOT NULL,");
 			sb.append("userId INTEGER NOT NULL,");
 			sb.append("pointsEarned INTEGER,");
+			sb.append("percentEarned FLOAT, ");
 			sb.append("response text)");
 			database().executeSQL(sb.toString());
 			database().executeSQL(

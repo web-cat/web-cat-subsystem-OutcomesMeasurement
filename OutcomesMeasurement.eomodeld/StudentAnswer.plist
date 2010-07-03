@@ -8,6 +8,12 @@
         }, 
         {
             allowsNull = N; 
+            columnName = percentEarned; 
+            name = percentEarned; 
+            prototypeName = float; 
+        }, 
+        {
+            allowsNull = N; 
             columnName = pointsEarned; 
             name = pointsEarned; 
             prototypeName = float; 
@@ -20,9 +26,9 @@
             prototypeName = foreignId; 
         }
     ); 
-    attributesUsedForLocking = (pointsEarned, response, userOID); 
+    attributesUsedForLocking = (percentEarned, pointsEarned, response, userOID); 
     className = "org.webcat.outcomesmeasurement.StudentAnswer"; 
-    classProperties = (coursework, pointsEarned, response, user); 
+    classProperties = (coursework, percentEarned, pointsEarned, response, user); 
     externalName = StudentAnswer; 
     fetchSpecificationDictionary = {}; 
     name = StudentAnswer; 

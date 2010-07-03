@@ -2,6 +2,7 @@ package org.webcat.outcomesmeasurement;
 
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -133,12 +134,20 @@ public class UploadGradebookPage extends BasePage {
 				User user = getUser(student.getStudentId());
 				for (int dataIndex = 0; dataIndex < student.getDataCells().count(); dataIndex ++){
 					Coursework cw = sectionAssignments.get(student.getCrn()).get(dataIndex);
-					StudentAnswer.createStudentAnswer(cw, student.getDataCells().get(dataIndex), user, localContext());
+					Double pointsEarned = Double.valueOf(student.getDataCells().get(dataIndex));
+					Double percentEarned =  pointsEarned / cw.max_result();
+					StudentAnswer.create(localContext(), percentEarned, pointsEarned, cw, user);
 				}
 			}
 		}
 		
-		return null;
+		ReportsPage page = (ReportsPage)pageWithName(ReportsPage.class.getName());
+		page.nextPage = this;
+		page.excellentCutoff = new BigDecimal(85.0);
+		page.moderateCutoff = new BigDecimal(60.0);
+//		page.poorCutoff = 40;
+		page.calculateOutcomes();
+		return page;
 	}
 
 	private void mapOutcomes(String mappingItem, Coursework cw) {
