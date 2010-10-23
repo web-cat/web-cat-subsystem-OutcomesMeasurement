@@ -1,16 +1,32 @@
 package org.webcat.outcomesmeasurement;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import org.webcat.core.Semester;
 
 public class OutcomePairStatistic {
+	private boolean dirtyCache = false;
 	private int excellentCount = 0;
-	private int moderateCount = 0;
-	private int poorCount = 0;
+	private int adequateCount = 0;
+	private int unsatisfactoryCount = 0;
 	private int totalNumber = 0;
-	private int excellentAsPercent = 0;
-	private int moderateAsPercent = 0;
-	private int poorAsPercent = 0;
+	private float excellentAsPercent = 0;
+	private float adequateAsPercent = 0;
+	private float unsatisfactoryAsPercent = 0;
+	private int excellentCutoff = 70;
+	private int adequateCutoff = 40;
+
+	public int getExcellentCutoff() {
+		return excellentCutoff;
+	}
+	public void setExcellentCutoff(int excellentCutoff) {
+		this.excellentCutoff = excellentCutoff;
+	}
+	public int getAdequateCutoff() {
+		return adequateCutoff;
+	}
+	public void setAdequateCutoff(int adequateCutoff) {
+		this.adequateCutoff = adequateCutoff;
+	}
+	private Semester semester;
 	
 	private OutcomePair outcomePair;
 	
@@ -20,17 +36,17 @@ public class OutcomePairStatistic {
 	public void setExcellentCount(int excellentCount) {
 		this.excellentCount = excellentCount;
 	}
-	public int getModerateCount() {
-		return moderateCount;
+	public int getAdequateCount() {
+		return adequateCount;
 	}
-	public void setModerateCount(int moderateCount) {
-		this.moderateCount = moderateCount;
+	public void setAdequateCount(int moderateCount) {
+		this.adequateCount = moderateCount;
 	}
-	public int getPoorCount() {
-		return poorCount;
+	public int getUnsatisfactoryCount() {
+		return unsatisfactoryCount;
 	}
-	public void setPoorCount(int poorCount) {
-		this.poorCount = poorCount;
+	public void setUnsatisfactoryCount(int poorCount) {
+		this.unsatisfactoryCount = poorCount;
 	}
 	public int getTotalNumber() {
 		return totalNumber;
@@ -48,41 +64,58 @@ public class OutcomePairStatistic {
 	public void incrementExcellent(){
 		this.excellentCount++;
 		this.totalNumber++;
+		if (!dirtyCache) dirtyCache = true;
+	}
+	public void incrementAdequate(){ 
+		this.adequateCount++;
+		this.totalNumber++;
+		if (!dirtyCache) dirtyCache = true;
+	}
+	public void incrementUnsatisfactory(){ 
+		this.totalNumber++;
+		this.unsatisfactoryCount++;
+		if (!dirtyCache) dirtyCache = true;
+	}
+	
+	private void resetPercents(){
 		setExcellentAsPercent();
-	}
-	public void incrementModerate(){ 
-		this.moderateCount++;
-		this.totalNumber++;
-		setModerateAsPercent();
-	}
-	public void incrementPoor(){ 
-		this.totalNumber++;
-		this.poorCount++;
-		setPoorAsPercent();
+		setUnsatisfactoryAsPercent();
+		setAdequateAsPercent();
 	}
 	
 	private void setExcellentAsPercent(){
 		this.excellentAsPercent = doDivision(this.excellentCount);
 	}
 	
-	private void setModerateAsPercent(){
-		this.moderateAsPercent = doDivision(this.moderateCount);
+	private void setAdequateAsPercent(){
+		this.adequateAsPercent = doDivision(this.adequateCount);
 	}
 	
-	private void setPoorAsPercent(){
-		this.poorAsPercent = doDivision(this.poorCount);
+	private void setUnsatisfactoryAsPercent(){
+		this.unsatisfactoryAsPercent = doDivision(this.unsatisfactoryCount);
 	}
 	
-	public int getExcellentAsPercent(){ return this.excellentAsPercent; }
-	public int getModerateAsPercent(){ return this.moderateAsPercent; }
-	public int getPoorAsPercent(){ return this.poorAsPercent; }
+	public float getExcellentAsPercent(){ 
+		if (dirtyCache) resetPercents();
+		return this.excellentAsPercent; 
+	}
+	public float getAdequateAsPercent(){ 
+		if (dirtyCache) resetPercents();
+		return this.adequateAsPercent;
+	}
+	public float getUnsatisfactoryAsPercent(){ 
+		if (dirtyCache) resetPercents();
+		return this.unsatisfactoryAsPercent; 
+	}
 	
-	private int doDivision(int dividend){
+	private float doDivision(float dividend){
 		if (this.totalNumber == 0 ) return 0;
-		BigDecimal retVal = new BigDecimal(dividend);
-		retVal.setScale(0);
-		retVal = retVal.multiply(new BigDecimal(100));
-		retVal = retVal.divide(new BigDecimal(this.totalNumber), RoundingMode.DOWN);
-		return retVal.intValue();
+		return dividend / this.totalNumber * 100;
+	}
+	public void setSemester(Semester semester) {
+		this.semester = semester;
+	}
+	public Semester getSemester() {
+		return semester;
 	}
 }

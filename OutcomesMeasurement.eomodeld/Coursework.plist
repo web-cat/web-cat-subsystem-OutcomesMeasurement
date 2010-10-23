@@ -1,9 +1,10 @@
 {
     attributes = (
         {
-            columnName = courseOfferingId; 
-            name = courseOfferingId; 
-            prototypeName = foreignId; 
+            allowsNull = Y; 
+            columnName = courseOfferingID; 
+            name = courseOfferingID; 
+            prototypeName = id; 
         }, 
         {columnName = dateCompleted; name = dateCompleted; prototypeName = dateTime; }, 
         {
@@ -21,7 +22,7 @@
             prototypeName = id; 
         }
     ); 
-    attributesUsedForLocking = (courseOfferingId, dateCompleted, description, "max_result"); 
+    attributesUsedForLocking = (dateCompleted, description, "max_result"); 
     className = "org.webcat.outcomesmeasurement.Coursework"; 
     classProperties = (
         courseOffering, 
@@ -38,8 +39,9 @@
     relationships = (
         {
             destination = CourseOffering; 
+            isToMany = N; 
             joinSemantic = EOInnerJoin; 
-            joins = ({destinationAttribute = id; sourceAttribute = courseOfferingId; }); 
+            joins = ({destinationAttribute = id; sourceAttribute = courseOfferingID; }); 
             name = courseOffering; 
         }, 
         {
