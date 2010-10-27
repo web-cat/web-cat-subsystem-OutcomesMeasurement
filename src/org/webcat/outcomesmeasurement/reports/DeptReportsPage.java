@@ -21,41 +21,16 @@ import com.webobjects.foundation.NSArray;
 import com.webobjects.foundation.NSMutableArray;
 
 @SuppressWarnings("serial")
-public class DeptReportsPage extends BasePage {
+public class DeptReportsPage extends BaseReportsPage {
     public DeptReportsPage(WOContext context) {
         super(context);
         if (reportType == null) reportType = "outcomePairs";
     }
-    
-    public String viewType = "Summary View";
-	public boolean summaryView = true;
-	public boolean detailView = false;
-	
+
 	public String reportType;
 	public String newReportType;
 	public String currDepartment;
 
-	public NSMutableArray<OutcomePairStatistic> outcomePairStats;
-	public OutcomePairStatistic anOutcomeStat;
-	
-    
-    public WOComponent setViewToSummary(){
-		viewType = "Summary View";
-		summaryView = true;
-		detailView = false;
-		return null;
-	}
-	
-	public WOComponent setViewToDetail(){
-		viewType = "Detailed View";
-		summaryView = false;
-		detailView = true;
-		return null;
-	}
-	
-	public boolean isSummaryView(){ return summaryView; }
-	public boolean isDetailView(){ return detailView; }
-	
     @Override
     public void appendToResponse(WOResponse response, WOContext context) {
     	NSArray<Department> depts = Department.allObjects(localContext());

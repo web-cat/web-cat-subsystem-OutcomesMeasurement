@@ -6,7 +6,6 @@ import java.util.Set;
 
 import org.webcat.core.Course;
 import org.webcat.core.CourseOffering;
-import org.webcat.outcomesmeasurement.BasePage;
 import org.webcat.outcomesmeasurement.Coursework;
 import org.webcat.outcomesmeasurement.OutcomePair;
 import org.webcat.outcomesmeasurement.OutcomePairStatistic;
@@ -19,52 +18,28 @@ import com.webobjects.foundation.NSArray;
 import com.webobjects.foundation.NSMutableArray;
 
 @SuppressWarnings("serial")
-public class CourseReportsPage extends BasePage {
+public class CourseReportsPage extends BaseReportsPage {
 	public CourseReportsPage(WOContext context) {
 		super(context);
 		allCourses = Course.allObjects(localContext());
 		if (allCourses.count() > 0) currCourse = allCourses.get(0);
     }
     
-	public String viewType = "Summary View";
-	public boolean summaryView = true;
-	public boolean detailView = false;
-	
 	public String reportType;
 	public String newReportType;
 
-	public NSMutableArray<OutcomePairStatistic> outcomePairStats;
-	public OutcomePairStatistic anOutcomeStat;
-	
 	public Course aCourse;
 	public NSArray<Course> allCourses;
 	public Course currCourse = null;
 	
     
-    public WOComponent setViewToSummary(){
-		viewType = "Summary View";
-		summaryView = true;
-		detailView = false;
-		return null;
-	}
-	
-	public WOComponent setViewToDetail(){
-		viewType = "Detailed View";
-		summaryView = false;
-		detailView = true;
-		return null;
-	}
-	
-	public WOComponent switchCourse(){
+    public WOComponent switchCourse(){
 		currCourse = aCourse;
 		outcomePairStats = getOutcomePairStats(currCourse);
 		return null;
 	}
 	
-	public boolean isSummaryView(){ return summaryView; }
-	public boolean isDetailView(){ return detailView; }
-	
-    @Override
+	@Override
     public void appendToResponse(WOResponse response, WOContext context) {
     	outcomePairStats = null;
     	if (currCourse != null)

@@ -18,38 +18,15 @@ import org.webcat.outcomesmeasurement.OutcomePairStatistic;
 import org.webcat.outcomesmeasurement.StudentAnswer;
 
 @SuppressWarnings("serial")
-public class AbetReportsPage extends BasePage {
-	public String viewType = "Summary View";
-	public boolean summaryView = true;
-	public boolean detailView = false;
+public class AbetReportsPage extends BaseReportsPage {
 
 	public String reportType;
 	public String newReportType;
-
-	public NSMutableArray<OutcomePairStatistic> outcomePairStats;
-	public OutcomePairStatistic anOutcomeStat;
 
 	public AbetReportsPage(WOContext context) {
 		super(context);
 		if (reportType == null) reportType = "outcomePairs";
 	}
-
-	public WOComponent setViewToSummary(){
-		viewType = "Summary View";
-		summaryView = true;
-		detailView = false;
-		return null;
-	}
-
-	public WOComponent setViewToDetail(){
-		viewType = "Detailed View";
-		summaryView = false;
-		detailView = true;
-		return null;
-	}
-
-	public boolean isSummaryView(){ return summaryView; }
-	public boolean isDetailView(){ return detailView; }
 
 	@Override
 	public void appendToResponse(WOResponse response, WOContext context) {

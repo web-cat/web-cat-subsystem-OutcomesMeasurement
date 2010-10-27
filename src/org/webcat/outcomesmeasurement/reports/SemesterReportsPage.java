@@ -13,7 +13,6 @@ import com.webobjects.foundation.NSMutableArray;
 
 import org.webcat.core.CourseOffering;
 import org.webcat.core.Semester;
-import org.webcat.outcomesmeasurement.BasePage;
 import org.webcat.outcomesmeasurement.Coursework;
 import org.webcat.outcomesmeasurement.MeasureOfOffering;
 import org.webcat.outcomesmeasurement.OutcomePair;
@@ -21,21 +20,13 @@ import org.webcat.outcomesmeasurement.OutcomePairStatistic;
 import org.webcat.outcomesmeasurement.StudentAnswer;
 
 @SuppressWarnings("serial")
-public class SemesterReportsPage extends BasePage {
-
-	public String viewType = "Summary View";
-	public boolean summaryView = true;
-	public boolean detailView = false;
-	
+public class SemesterReportsPage extends BaseReportsPage {	
 	public String reportType;
 	public String newReportType;
 	
 	public Semester currSemester;
 	public NSArray<Semester> allSems;
 	public Semester aSem;
-	
-	public NSMutableArray<OutcomePairStatistic> outcomePairStats;
-	public OutcomePairStatistic anOutcomeStat;
 	
 	public SemesterReportsPage(WOContext context) {
         super(context);
@@ -44,36 +35,17 @@ public class SemesterReportsPage extends BasePage {
         currSemester = findMostRecentCompleted(allSems);
     }
 	
-	public WOComponent setViewToSummary(){
-		viewType = "Summary View";
-		summaryView = true;
-		detailView = false;
-		return null;
-	}
-	
-	public WOComponent setViewToDetail(){
-		viewType = "Detailed View";
-		summaryView = false;
-		detailView = true;
-		return null;
-	}
-	
 	public WOComponent switchSemester(){
 		currSemester = aSem;
 		return null;
 	}
 	
-	public boolean isSummaryView(){ return summaryView; }
-	public boolean isDetailView(){ return detailView; }
-	
-    
     @Override
     public void appendToResponse(WOResponse response, WOContext context) {
     	if (allSems.count() > 0){
-//    		currSemester = allSems.get(0);
     		NSArray<CourseOffering> offerings = CourseOffering.objectsMatchingQualifier(localContext(), CourseOffering.semester.eq(currSemester));
     		outcomePairStats = new NSMutableArray<OutcomePairStatistic>();
-    		NSArray<Coursework> allCoursework = Coursework.objectsMatchingQualifier(localContext(), Coursework.courseOffering.in(offerings));
+    		NSArray<Coursework> allCoursework = Coursework.objectsMatchingQualifier(localContext(), Coursework.courseOffering.in(offerings).and(Coursework.outcomePair.isNotNull()));
     		if (reportType.equals("measures")){
     			NSArray<MeasureOfOffering> measures = MeasureOfOffering.objectsMatchingQualifier(localContext(), MeasureOfOffering.courseOffering.in(offerings));
     			outcomePairStats = getStatsForMeasures(measures);
