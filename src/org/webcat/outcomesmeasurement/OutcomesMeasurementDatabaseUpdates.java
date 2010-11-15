@@ -85,6 +85,11 @@ extends UpdateSet
 		createCourseWorkTable();
 		createStudentAnswerTable();
 	}
+	
+	public void updateIncrement2() throws SQLException {
+		alterCourseWorkTable();
+	}
+
 
 	//~ Private Methods .......................................................
 
@@ -566,7 +571,12 @@ extends UpdateSet
 		}
 	}
 
-
+	public void alterCourseWorkTable() throws SQLException {
+		log.info("altering table coursework");
+		database().executeSQL("alter table Coursework add excellentCutoff FLOAT" );
+		database().executeSQL("alter table Coursework add moderateCutoff FLOAT" );
+	}
+	
 	//~ Instance/static variables .............................................
 
 	static Logger log =

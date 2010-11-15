@@ -1,6 +1,5 @@
 package org.webcat.outcomesmeasurement;
 
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -142,11 +141,12 @@ public class UploadGradebookPage extends BasePage {
 			}
 		}
 		
+//		CourseReportsPage page2 = (CourseReportsPage)pageWithName(CourseReportsPage.class.getName());
+		
 		ReportsPage page = (ReportsPage)pageWithName(ReportsPage.class.getName());
 		page.nextPage = this;
 		page.excellentCutoff = new BigDecimal(85.0);
 		page.moderateCutoff = new BigDecimal(60.0);
-//		page.poorCutoff = 40;
 		page.calculateOutcomes();
 		return page;
 	}
@@ -204,7 +204,6 @@ public class UploadGradebookPage extends BasePage {
 		if (op != null){
 			cw.setOutcomePairRelationship(op);
 			log.debug("OP id: " + cw.outcomePair().id());
-//			this.applyLocalChanges();
 			localContext().saveChanges();
 		}
 	}
@@ -348,6 +347,8 @@ public class UploadGradebookPage extends BasePage {
 					Pattern.matches(STUDENT_REGEX, cellValue)){
 				return RowTypes.STUDENT;
 			}
+			if (cellValue.toLowerCase().contains("excellent")) return RowTypes.EXCELLENT_CUTOFF;
+			if (cellValue.toLowerCase().contains("acceptable")) return RowTypes.ACCEPTABLE_CUTOFF;
 			if (colHeaders.contains(cellValue)){
 				return RowTypes.HEADER;
 			}

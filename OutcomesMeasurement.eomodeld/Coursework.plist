@@ -1,6 +1,12 @@
 {
     attributes = (
         {
+            allowsNull = N; 
+            columnName = acceptableCutoff; 
+            name = acceptableCutoff; 
+            prototypeName = float; 
+        }, 
+        {
             allowsNull = Y; 
             columnName = courseOfferingID; 
             name = courseOfferingID; 
@@ -13,6 +19,12 @@
             name = description; 
             prototypeName = mediumText; 
         }, 
+        {
+            allowsNull = N; 
+            columnName = excellentCutoff; 
+            name = excellentCutoff; 
+            prototypeName = float; 
+        }, 
         {allowsNull = N; name = id; prototypeName = id; }, 
         {columnName = "max_result"; name = "max_result"; prototypeName = float; }, 
         {
@@ -22,12 +34,14 @@
             prototypeName = id; 
         }
     ); 
-    attributesUsedForLocking = (dateCompleted, description, "max_result"); 
+    attributesUsedForLocking = (acceptableCutoff, dateCompleted, description, excellentCutoff, "max_result"); 
     className = "org.webcat.outcomesmeasurement.Coursework"; 
     classProperties = (
+        acceptableCutoff, 
         courseOffering, 
         dateCompleted, 
         description, 
+        excellentCutoff, 
         "max_result", 
         outcomePair, 
         studentAnswers

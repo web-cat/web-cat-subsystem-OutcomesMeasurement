@@ -62,19 +62,25 @@ public abstract class _Coursework
      * attributes and relationships.
      * @param editingContext The context in which the new object will be
      * inserted
+     * @param acceptableCutoffValue
      * @param descriptionValue
+     * @param excellentCutoffValue
      * @return The newly created object
      */
     public static Coursework create(
         EOEditingContext editingContext,
-        String descriptionValue
+        Double acceptableCutoffValue,
+        String descriptionValue,
+        Double excellentCutoffValue
         )
     {
         Coursework eoObject = (Coursework)
             EOUtilities.createAndInsertInstance(
                 editingContext,
                 _Coursework.ENTITY_NAME);
+        eoObject.setAcceptableCutoff(acceptableCutoffValue);
         eoObject.setDescription(descriptionValue);
+        eoObject.setExcellentCutoff(excellentCutoffValue);
         return eoObject;
     }
 
@@ -139,12 +145,18 @@ public abstract class _Coursework
     //~ Constants (for key names) .............................................
 
     // Attributes ---
+    public static final String ACCEPTABLE_CUTOFF_KEY = "acceptableCutoff";
+    public static final ERXKey<Double> acceptableCutoff =
+        new ERXKey<Double>(ACCEPTABLE_CUTOFF_KEY);
     public static final String DATE_COMPLETED_KEY = "dateCompleted";
     public static final ERXKey<NSTimestamp> dateCompleted =
         new ERXKey<NSTimestamp>(DATE_COMPLETED_KEY);
     public static final String DESCRIPTION_KEY = "description";
     public static final ERXKey<String> description =
         new ERXKey<String>(DESCRIPTION_KEY);
+    public static final String EXCELLENT_CUTOFF_KEY = "excellentCutoff";
+    public static final ERXKey<Double> excellentCutoff =
+        new ERXKey<Double>(EXCELLENT_CUTOFF_KEY);
     public static final String MAX_RESULT_KEY = "max_result";
     public static final ERXKey<Double> max_result =
         new ERXKey<Double>(MAX_RESULT_KEY);
@@ -212,6 +224,35 @@ public abstract class _Coursework
 
     // ----------------------------------------------------------
     /**
+     * Retrieve this object's <code>acceptableCutoff</code> value.
+     * @return the value of the attribute
+     */
+    public Double acceptableCutoff()
+    {
+        return (Double)storedValueForKey( "acceptableCutoff" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Change the value of this object's <code>acceptableCutoff</code>
+     * property.
+     *
+     * @param value The new value for this property
+     */
+    public void setAcceptableCutoff( Double value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "setAcceptableCutoff("
+                + value + "): was " + acceptableCutoff() );
+        }
+        takeStoredValueForKey( value, "acceptableCutoff" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
      * Retrieve this object's <code>dateCompleted</code> value.
      * @return the value of the attribute
      */
@@ -265,6 +306,35 @@ public abstract class _Coursework
                 + value + "): was " + description() );
         }
         takeStoredValueForKey( value, "description" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve this object's <code>excellentCutoff</code> value.
+     * @return the value of the attribute
+     */
+    public Double excellentCutoff()
+    {
+        return (Double)storedValueForKey( "excellentCutoff" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Change the value of this object's <code>excellentCutoff</code>
+     * property.
+     *
+     * @param value The new value for this property
+     */
+    public void setExcellentCutoff( Double value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "setExcellentCutoff("
+                + value + "): was " + excellentCutoff() );
+        }
+        takeStoredValueForKey( value, "excellentCutoff" );
     }
 
 

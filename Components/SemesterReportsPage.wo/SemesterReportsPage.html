@@ -50,6 +50,14 @@
 
 <wo:if condition="$isDetailView">
 	<p>The detailed view gives specific information about each Outcome Pair. This will include all grades measured for that pair. To view how student results for that Outcome Pair have changed over time, click the "View Outcome Over Time" button found within each Outcome Pair's breakdown.</p>
+	<p>Green indicates the grades in the "Excellent" range.<br/>Yellow indicates grades in the "Adequate" range.<br/>Red indicates grades in the "Unsatisfactory" range.</p>
+	<p>
+		<wo:WCForm>
+		<span style="font-weight: bold; margin-right: .5em; font-size: 1.2em;">Semester:</span>
+		<span style="font-size: 1.1em; font-style: italic;"><wo:str value = "$currSemester" /></span>
+		<wo name="SelectSemester"/> <wo:WCButton label="Switch Semesters" action="$switchSemester"/>
+		</wo:WCForm>
+	</p>
 	<wo name="OutcomeRepetition">
 		<table width="90%" style="margin-bottom: 2em; vertical-align: top;">
 			<tr>
