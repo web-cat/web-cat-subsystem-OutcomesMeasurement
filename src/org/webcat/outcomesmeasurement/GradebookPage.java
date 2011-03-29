@@ -1,7 +1,5 @@
 package org.webcat.outcomesmeasurement;
 
-import org.webcat.core.CourseOffering;
-
 import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.foundation.NSData;

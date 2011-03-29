@@ -111,7 +111,7 @@ public class UploadGradebookPage extends BasePage {
 			for (int i = 0; i < gBook.getCourseworkList().count(); i ++){
 				String cwTitle = gBook.getCourseworkList().get(i);
 				for (String localCrn : gBook.getCrns()){
-					Coursework cw = Coursework.create(localContext(), cwTitle);
+					Coursework cw = Coursework.create(localContext(), 60.0, cwTitle, 80.0);
 					Double max = null;
 					if (gBook.getMaxValueRow().count() > 0 && i +2 < gBook.getMaxValueRow().count()) max = Double.valueOf(gBook.getMaxValueRow().get(i+2));
 					cw.setMax_result(max);

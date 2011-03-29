@@ -160,6 +160,9 @@ public abstract class _Coursework
     public static final String MAX_RESULT_KEY = "max_result";
     public static final ERXKey<Double> max_result =
         new ERXKey<Double>(MAX_RESULT_KEY);
+    public static final String OUTCOME_PAIR_ID_KEY = "outcomePairID";
+    public static final ERXKey<Long> outcomePairID =
+        new ERXKey<Long>(OUTCOME_PAIR_ID_KEY);
     // To-one relationships ---
     public static final String COURSE_OFFERING_KEY = "courseOffering";
     public static final ERXKey<org.webcat.core.CourseOffering> courseOffering =
@@ -364,6 +367,35 @@ public abstract class _Coursework
                 + value + "): was " + max_result() );
         }
         takeStoredValueForKey( value, "max_result" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Retrieve this object's <code>outcomePairID</code> value.
+     * @return the value of the attribute
+     */
+    public Long outcomePairID()
+    {
+        return (Long)storedValueForKey( "outcomePairID" );
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Change the value of this object's <code>outcomePairID</code>
+     * property.
+     *
+     * @param value The new value for this property
+     */
+    public void setOutcomePairID( Long value )
+    {
+        if (log.isDebugEnabled())
+        {
+            log.debug( "setOutcomePairID("
+                + value + "): was " + outcomePairID() );
+        }
+        takeStoredValueForKey( value, "outcomePairID" );
     }
 
 
